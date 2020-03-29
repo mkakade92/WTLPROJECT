@@ -10,6 +10,8 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   	<script src="dashboardScript.js" type="text/javascript"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">	
 	<title>Dashboard</title>
 	
@@ -33,6 +35,9 @@
 							<input type="submit" value="Upload">
 						</form>
 					</div>
+					<div class="viewGrievance">
+						<button type="button" id="viewG">View Grievance </button>
+					</div>
 					<form action="Logout" method="GET">
 						<input type="submit" value="Logout">
 					</form> 
@@ -41,7 +46,11 @@
 							<h1> Grievance Uploaded Successfully</h1>
 						</c:if>
 					</div>	
-				</div>	
+				</div>
+				<div class="displayGrievance">
+				<table id="GrievanceTable">
+				</table>
+				</div>
 	</c:if>
 	<c:if test="${sessionScope.uname == null}">
 		<c:redirect url="/login.jsp"/>

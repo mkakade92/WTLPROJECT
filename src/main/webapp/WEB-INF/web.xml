@@ -34,6 +34,13 @@ id="WebApp_ID" version="3.0">
 		<servlet-name>Logout</servlet-name>
 		<servlet-class>com.pict.sg.Logout</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>ViewGrievance</display-name>
+		<servlet-name>ViewGrievance</servlet-name>
+		<servlet-class>com.pict.sg.ViewGrievance</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>AddStudent</servlet-name>
 		<url-pattern>/AddStudent</url-pattern>
@@ -49,5 +56,9 @@ id="WebApp_ID" version="3.0">
 	<servlet-mapping>
 		<servlet-name>Logout</servlet-name>
 		<url-pattern>/Logout</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewGrievance</servlet-name>
+		<url-pattern>/ViewGrievance</url-pattern>
 	</servlet-mapping>
 </web-app>

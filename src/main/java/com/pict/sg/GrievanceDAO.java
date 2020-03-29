@@ -40,6 +40,7 @@ public class GrievanceDAO {
 		for(Document doc:document)
 		{
 		G = GrievanceConvertor.toObject(doc);
+		System.out.println(G.toString());
 		SG_List.add(G);
 		}
 		return SG_List;
