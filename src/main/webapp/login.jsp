@@ -19,7 +19,7 @@
 
 <body>
 	<!-- User already logged in -->
-	<c:if test="${not empty uid}">
+	<c:if test="${sessionScope.uname!=null}">
 		<c:redirect url="./dashboard.jsp"/>
 	</c:if>
 
@@ -33,28 +33,25 @@
           </div>
       
           <!-- Login Form -->
-          <form action="/StudenLogin.java" method="post">
+          <form action="StudentLogin" method="post">
             <input type="text" id="username" class="fadeIn second" name="uname" placeholder="Username">
             <input type="text" id="password" class="fadeIn third" name="pwd" placeholder="Password">
             <input type="submit" class="fadeIn fourth" value="Log In">
           </form>
-      
+      	
           <!-- Remind Password -->
           <div id="formFooter">
             <a class="underlineHover" href="#">Forgot Password?</a>
-            <a class="underlineHover" href="./signUp.jsp">Not a Member? Sign up here</a>
+            <a class="underlineHover" href="./signUp.jsp">Not a Member? Sign up here</a> 
           </div>
+          <c:if test="${not empty requestScope.Error}">
+	          <div  id="ErrorMsg">
+	          	<h6><c:out value="${requestScope.Error}"></c:out></h6>
+	          </div>
+          </c:if>
         </div>
       </div>
-      <c:choose>
-      	<c:when test="${not empty message}">
-      		<c:redirect url="/dashboard.jsp"/>
-      	</c:when>
-      	<c:when test="${empty message}">
-      		<p><h5>Invalid username or Password</h5>
-      	</c:when>
-      </c:choose>
-      	
+      
       	
 </body>
 

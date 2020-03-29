@@ -48,7 +48,10 @@ public class Student {
 	public void set_Class(String _Class) {
 		this._Class = _Class;
 	}
-	
-	
+		public String toString()
+	{
+		return this._Class+" "+this.fName+" " +this.lName;
+		
+	}
 	
 }

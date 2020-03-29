@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+html {
+  background-color: #56baed;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+}
+
+a {
+  color: #92badd;
+  display:inline-block;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.formContainer{
+	height:100%;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
+}
+
+.formContainer-centered{
+	display: flex;
+	width: 75%;
+	flex-direction: column;
+	justify-content: center;
+}
+
+textarea{
+	border : 1px solid black
+	border-radius:5px;
+}

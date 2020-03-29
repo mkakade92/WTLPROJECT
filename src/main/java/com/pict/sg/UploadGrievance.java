@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,15 +13,15 @@ import javax.servlet.http.HttpSession;
 import com.mongodb.MongoClient;
 
 /**
- * Servlet implementation class AddStudent
+ * Servlet implementation class UploadGrievance
  */
-public class AddStudent extends HttpServlet {
+public class UploadGrievance extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddStudent() {
+    public UploadGrievance() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,44 +40,38 @@ public class AddStudent extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session=request.getSession();
-//		session.invalidate();
-		RequestDispatcher rd=getServletContext().getRequestDispatcher("/dashboard.jsp");
-		System.out.println(rd.toString());
-		if(session==null || session.getAttribute("uid")==null )
-		{
-		int rollNo=Integer.parseInt(request.getParameter("rollno"));
-		String fName=request.getParameter("fName");
-		String lName=request.getParameter("lName");
-		System.out.println("Lname: "+lName);
-		String _Class=request.getParameter("_Class");
-		String uName=request.getParameter("uName");
-		String pwd=request.getParameter("pwd");
 		
-		Student s=new Student();
-		s.set_Class(_Class);
-		s.setfName(fName);
-		s.setlName(lName);
-		s.setPwd(pwd);
-		s.setRollno(rollNo);
-		s.setUname(uName);
+		HttpSession session=request.getSession(); 
+		RequestDispatcher rd=getServletContext().getRequestDispatcher("/dashboard.jsp");
+		if(session!=null || session.getAttribute("uname")==null)
+		{
+		String uName=(String) session.getAttribute("uname");
+		String title=request.getParameter("title");
+		String grievance=request.getParameter("grievance");
+		
+		
+		StudentGrievance g=new StudentGrievance();
+		g.setUname(uName);
+		g.setTitle(title);
+		g.setGrievance(grievance);
 		
 		MongoClient mongo = (MongoClient) request.getServletContext()
 				.getAttribute("MONGO_CLIENT");
-		StudentDAO sDAO=new StudentDAO(mongo);
-		sDAO.createStudent(s);
-		ArrayList<Student> data=new ArrayList<Student>();
-		data.add(s);
-		request.setAttribute("Student", data);
-		session.setAttribute("uname",s.getUname());
-		System.out.println("Student added successfully woth id : "+s.getId());
+		GrievanceDAO gDAO=new GrievanceDAO(mongo);
+		gDAO.createGrievance(g);
+		ArrayList<StudentGrievance> data=new ArrayList<StudentGrievance>();
+		data.add(g);
+		request.setAttribute("StudentG", data);
+		request.setAttribute("UploadMsg","Success");
+		session.setAttribute("uname",g.getUname());
+		System.out.println("Grievance added successfully with id : "+g.getId());
 		rd.forward(request, response);
-
 		}
 		else
 		{
 			rd.forward(request, response);
 		}
+	
 	}
 
 }

@@ -25,11 +25,9 @@
           </div>
       
           <!-- Login Form -->
-          <form>
-          <div id="name">
+          <form action="AddStudent" method="POST">
           	<input type="text" id="FName" class="fadeIn second" name="fName" placeholder="First Name">
-          	<input type="text" id="LName" class="fadeIn second" name="lNAme" placeholder="Last Name">
-		  </div>
+          	<input type="text" id="LName" class="fadeIn second" name="lName" placeholder="Last Name">
 			<input type="text" id="Class" class="fadeIn third" name="_Class" placeholder="Class">
 			<input type="text" id="RollNo" class="fadeIn fourth" name="rollno" placeholder="Roll Number">          	  	
             <input type="text" id="username" class="fadeIn fifth" name="uName" placeholder="Username">

@@ -4,8 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bson.Document;
+import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.BasicDBObjectBuilder;
+import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
@@ -56,11 +60,12 @@ public class StudentDAO {
 	
 	public Student readStudent(String uname) {
 		Student S = null;
-		Document query = new Document()
-				.append("Username",uname);
-		FindIterable<Document> document = this.col.find(query);
+		DBObject query =BasicDBObjectBuilder.start()
+				.append("Username",uname).get();
+		FindIterable<Document> document = this.col.find((Bson) query);
 		for(Document doc:document)
 		{
+		System.out.println(doc.toString());
 		S = StudentConvertor.toObject(doc);
 		}
 		return S;
@@ -69,14 +74,17 @@ public class StudentDAO {
 	public boolean verifyStudent(String uname,String pwd)
 	{
 		//first check if username exists
-		Document query=new Document()
-				.append("Username",uname)
-				.append("password",pwd);
-		FindIterable<Document> document = this.col.find(query);
-		if(document==null)
-			return false;
-		else
+		DBObject query = BasicDBObjectBuilder.start()
+				.append("Username", uname)
+				.append("password", pwd).get();
+		
+		FindIterable<Document> document = this.col.find((Bson) query);
+		for(Document doc: document)
+		{
+			System.out.println(doc.toString());
 			return true;
+		}
+		return false;
 	}
 		 
 }

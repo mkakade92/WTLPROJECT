@@ -47,22 +47,22 @@ public class StudentLogin extends HttpServlet {
 		if(sDAO.verifyStudent(uName, pwd))
 		{
 			System.out.println("Successful Authentication");
-			
-			
-			
 			HttpSession session=request.getSession();
-			session.setAttribute("uid",uName);
+			session.setAttribute("uname",uName);
 			Student S=sDAO.readStudent(uName);
 			ArrayList<Student> data=new ArrayList<Student>();
 			data.add(S);
+			System.out.println(S.toString());
 			request.setAttribute("Student", data);
 			request.getRequestDispatcher("/dashboard.jsp").forward(request, response);
 			
 		}
 		else
+		{
+			System.out.println("Login Unsuccessfull");
+			request.setAttribute("Error","Invalid credentials");
 			request.getRequestDispatcher("/login.jsp").forward(request, response);
-		
-	
-	}
+		}
 
+	}
 }
