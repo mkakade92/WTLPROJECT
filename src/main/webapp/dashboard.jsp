@@ -7,13 +7,13 @@
 <head>
 	<meta charset="UTF-8">
  	<link rel="stylesheet" href="./dashboardStyle.css">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-   	<script src="dashboardScript.js" type="text/javascript"></script>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>    
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+   	<script src="./dashboardScript.js" type="text/javascript"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">	
-	<title>Dashboard</title>
+	<title>Home</title>
 	
 </head>
 <html>
@@ -29,10 +29,10 @@
 		</c:forEach>
 				<div class="formContainer">
 					<div class="formContainer-centered">
-						<form action="UploadGrievance" method="GET">
+						<form id="uploadForm" action="UploadGrievance" method="GET" >
 							<input type="text" name="title" placeholder="Title">
 							<textarea name="grievance" rows="5" cols="100" maxlength="500" ></textarea>
-							<input type="submit" value="Upload">
+							<input type="submit" id="uploadBtn" value="submit">
 						</form>
 					</div>
 					<div class="viewGrievance">
@@ -41,16 +41,15 @@
 					<form action="Logout" method="GET">
 						<input type="submit" value="Logout">
 					</form> 
-					<div class="UploadSuccessMsg">
-						<c:if test="${requestScope.UploadMsg != null}">
-							<h1> Grievance Uploaded Successfully</h1>
-						</c:if>
-					</div>	
+					<div id="UploadSuccessMsg"></div>	
 				</div>
 				<div class="displayGrievance">
 				<table id="GrievanceTable">
 				</table>
 				</div>
+				<div class="deleteGrievanceMsg">
+				<c:out value="${requestScope.MSG}"></c:out>
+				 </div>
 	</c:if>
 	<c:if test="${sessionScope.uname == null}">
 		<c:redirect url="/login.jsp"/>

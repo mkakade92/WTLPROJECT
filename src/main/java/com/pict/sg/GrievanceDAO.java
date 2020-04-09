@@ -2,6 +2,8 @@ package com.pict.sg;
 
 import java.util.ArrayList;
 
+import static com.mongodb.client.model.Filters.eq;
+
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
@@ -11,6 +13,7 @@ import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.result.DeleteResult;
 
 public class GrievanceDAO {
 	
@@ -45,5 +48,22 @@ public class GrievanceDAO {
 		}
 		return SG_List;
 	}
-
+	
+	public boolean deleteGrievance(String id)
+	{
+		DBObject query = BasicDBObjectBuilder.start()
+				.append("_id",id).get();
+		FindIterable<Document> document = this.col.find((Bson) query);
+		if(document!=null)
+		{
+			DeleteResult res=this.col.deleteOne(eq("_id",new ObjectId(id)));
+			System.out.println("deleteOne() - # of records deleted - " + res.getDeletedCount());
+			return true;
+		}
+		else
+		{
+			System.out.println("Document for Deletion not found");
+		return false;
+		}
+	}
 }

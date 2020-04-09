@@ -35,7 +35,7 @@
           <!-- Login Form -->
           <form action="StudentLogin" method="post">
             <input type="text" id="username" class="fadeIn second" name="uname" placeholder="Username">
-            <input type="text" id="password" class="fadeIn third" name="pwd" placeholder="Password">
+            <input type="password" id="password" class="fadeIn third" name="pwd" placeholder="Password">
             <input type="submit" class="fadeIn fourth" value="Log In">
           </form>
       	

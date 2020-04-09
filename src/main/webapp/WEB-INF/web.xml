@@ -41,6 +41,13 @@ id="WebApp_ID" version="3.0">
 		<servlet-name>ViewGrievance</servlet-name>
 		<servlet-class>com.pict.sg.ViewGrievance</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>DeleteGrievance</display-name>
+		<servlet-name>DeleteGrievance</servlet-name>
+		<servlet-class>com.pict.sg.DeleteGrievance</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>AddStudent</servlet-name>
 		<url-pattern>/AddStudent</url-pattern>
@@ -60,5 +67,9 @@ id="WebApp_ID" version="3.0">
 	<servlet-mapping>
 		<servlet-name>ViewGrievance</servlet-name>
 		<url-pattern>/ViewGrievance</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DeleteGrievance</servlet-name>
+		<url-pattern>/DeleteGrievance</url-pattern>
 	</servlet-mapping>
 </web-app>

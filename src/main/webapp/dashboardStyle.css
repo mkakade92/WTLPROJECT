@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 html {
-  background-color: #56baed;
+  background-color: #ffff;
 }
 
 body {
@@ -34,4 +34,12 @@ a {
 textarea{
 	border : 1px solid black
 	border-radius:5px;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+td {
+  height: 50px;
+  vertical-align: bottom;
 }

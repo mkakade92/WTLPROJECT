@@ -65,12 +65,12 @@ public class UploadGrievance extends HttpServlet {
 		request.setAttribute("UploadMsg","Success");
 		session.setAttribute("uname",g.getUname());
 		System.out.println("Grievance added successfully with id : "+g.getId());
-		rd.forward(request, response);
+		response.sendRedirect("./dashboard.jsp");
 		}
 		else
 		{
-			rd.forward(request, response);
-		}
+			response.sendRedirect("./dashboard.jsp");
+	}
 	
 	}
 
